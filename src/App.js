@@ -41,9 +41,18 @@ const App = (props) => {
   const addToFavorites = (movie) => {
     const favoriyeEklendi = favoriteMovies.includes(movie);
     if (!favoriyeEklendi) {
-      setFavoriteMovies([...favoriteMovies, movie]);
+      const updatedFavorites = [...favoriteMovies, movie];
+      setFavoriteMovies(updatedFavorites);
+
+      localStorage.setItem("favoriteMovies", JSON.stringify(updatedFavorites));
     }
   };
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favoriteMovies");
+    if (storedFavorites) {
+      setFavoriteMovies(JSON.parse(storedFavorites));
+    }
+  }, []);
 
   return (
     <div>
