@@ -39,8 +39,8 @@ const App = (props) => {
   };
 
   const addToFavorites = (movie) => {
-    const isAlreadyInFavorites = favoriteMovies.includes(movie);
-    if (!isAlreadyInFavorites) {
+    const favoriyeEklendi = favoriteMovies.includes(movie);
+    if (!favoriyeEklendi) {
       setFavoriteMovies([...favoriteMovies, movie]);
     }
   };
