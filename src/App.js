@@ -38,7 +38,12 @@ const App = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const addToFavorites = (movie) => {};
+  const addToFavorites = (movie) => {
+    const isAlreadyInFavorites = favoriteMovies.includes(movie);
+    if (!isAlreadyInFavorites) {
+      setFavoriteMovies([...favoriteMovies, movie]);
+    }
+  };
 
   return (
     <div>
@@ -61,7 +66,10 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie deleteMovie={deleteMovie} />
+              <Movie
+                deleteMovie={deleteMovie}
+                addToFavorites={addToFavorites}
+              />
             </Route>
 
             <Route path="/movies">
